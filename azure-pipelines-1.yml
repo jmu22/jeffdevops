@@ -24,7 +24,7 @@ stages:
             {
               "artifacts": [
                   {
-                    "name": "jeffartifactbuild",
+                    "name": "_build pipeline",
                     "version": "1.$(Build.BuildId)",
                     "semanticVersion": "1.$(Build.BuildId).0",
                     "repositoryName": "build pipeline"
