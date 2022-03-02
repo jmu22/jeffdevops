@@ -15,22 +15,22 @@ stages:
   jobs:
     - job: Build
       steps: 
-        - script: echo "Build"
-          displayName: build
-        - task: ServiceNow-DevOps-Agent-Artifact-Registration@1
-          inputs:
-            connectedServiceName: 'DevOps Connection'
-            artifactsPayload: |
-              {
-                "artifacts": [
-                    {
-                      "name": "jeffartifact",
-                      "version": "1.$(Build.BuildId)",
-                      "semanticVersion": "1.$(Build.BuildId).0",
-                      "repositoryName": "cicd pipeline"
-                    }
-                ]
-              }
+      - script: echo "Build"
+        displayName: build
+      - task: ServiceNow-DevOps-Agent-Artifact-Registration@1
+        inputs:
+          connectedServiceName: 'DevOps Connection'
+          artifactsPayload: |
+            {
+              "artifacts": [
+                  {
+                    "name": "jeffartifact",
+                    "version": "1.$(Build.BuildId)",
+                    "semanticVersion": "1.$(Build.BuildId).0",
+                    "repositoryName": "cicd pipeline"
+                  }
+              ]
+            }
 - stage: Test
   jobs:
     - job: Unit_Tests
