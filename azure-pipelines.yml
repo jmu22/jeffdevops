@@ -52,6 +52,29 @@ stages:
       steps: 
          - script: echo "Production Deploy"
            displayName: Production Deploy
+         - task: ServiceNow-DevOps-Agent-Package-Registration@1
+           inputs:
+            connectedServiceName: DevOps Connection
+            packageName: jeffbigpackage
+            artifactsPayload: |
+              {
+                  "artifacts": [
+                  {
+                      "name": "jeffartifact",
+                      "repositoryName": "cicd pipline",
+                      "version": "1.$(build.buildId)",
+                      "pipelineName":"$(system.teamProject)/$(build.definitionName)",
+                      "taskExecutionNumber":"$(build.buildId)",
+                      "stageName":"$(system.jobDisplayName)",
+                      "branchName":"$(build.sourceBranchName)"
+                  }],
+                  "pipelineName":"$(system.teamProject)/$(build.definitionName)",
+                  "taskExecutionNumber":"$(build.buildId)",
+                  "stageName":"$(system.jobDisplayName)",
+                  "branchName":"$(build.sourceBranchName)"
+              }
+
+    
 
       
       
