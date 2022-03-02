@@ -12,7 +12,7 @@ pool:
 stages:
 - stage: Build
   jobs:
-    - job: empty job
+    - job: artifact_pipeline
 
 - stage: Test
   jobs:
